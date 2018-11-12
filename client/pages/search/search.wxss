@@ -1,0 +1,22 @@
+/* pages/search/search.wxss */
+.search-container {
+  margin-top: 10rpx;
+  height: 80rpx;
+  width: 90%;
+  background: #FFF;
+  border: 1px solid rgba(0, 0, 0, .1);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.search-box {
+  padding: 10rpx 20rpx;
+  flex: 1;
+}
+
+.search-icon {
+  padding: 10rpx;
+  width: 60rpx;
+  height: 60rpx;
+}

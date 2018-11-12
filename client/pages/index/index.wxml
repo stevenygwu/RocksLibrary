@@ -1,0 +1,40 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="container" wx:if="{{!registered}}">
+    <image
+        class="welcome-image"
+        src="./openlib.gif"
+        background-size="cover"
+    ></image>
+  </view>
+  <!-- show library-->
+  <view class="container" wx:else>
+    <view class="search-container">
+      <view class="search-box" bindtap="searchByText">输入搜索内容</view>
+      <image class="search-icon" src="resources/kind/scan.png" bindtap="searchByScan"></image>
+    </view>
+    <block wx:for-items="{{list}}" wx:key="{{item.id}}">
+      <view class="container">
+        <view id="{{item.id}}" class="list-container {{item.open ? 'kind-list-item-hd-show' : ''}}" bindtap="listToggle">
+          <view class="kind-list-text">{{item.name}}</view>
+          <image class="kind-list-img" src="resources/kind/{{item.id}}.png"></image>
+        </view>
+        <view class="kind-list-item-bd {{item.open ? 'kind-list-item-bd-show' : ''}}">
+          <view class="navigator-box {{item.open ? 'navigator-box-show' : ''}}">
+            <view class="userinfo" wx:for-items="{{item.books}}" wx:for-item="book" wx:key="*item" bindtap="showBookDetail" >
+              <image
+                  class="userinfo-avatar"
+                  mode="aspectFit"
+                  src="{{book.img}}"
+                  background-size="cover"
+              ></image>
+              <view>
+                  <text class="userinfo-nickname">{{book.title}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

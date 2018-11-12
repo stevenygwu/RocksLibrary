@@ -1,0 +1,66 @@
+<!--pages/recording/recording.wxml-->
+<view class="book-container" wx:if="{{bBookReady}}">
+  <view class="book-info" >
+    <image
+      class="book-image"
+      mode="aspectFit"
+      src="{{img}}"
+      background-size="cover"
+    ></image>
+    <view class="book-stext">
+      <text>Title: {{title}}\n</text>
+      <text>Author: {{author}}\n</text>
+      <text>ISBN: {{isbn}}</text>
+    </view>
+  </view>
+  <view class="book-container" >
+    <form catchsubmit="formSubmit">
+      <text>\n简介:\n</text>
+      <textarea class="book-summary-input-box" name="Summary" value="{{summary}}" 
+                placeholder="please input here" maxlength="1024" disabled="{{bReadOnly}}" auto-height="true"/>
+      <view class="ebook-uploader">
+        <view class="ebook-uploade-text" bindtap="doUploadEbook">
+          <text decode="true">上传电子书</text>
+        </view>
+        <view class="ebook-uploade-container" wx:if="{{ebookUrl}}">
+            <text>src="{{ebookUrl}}"</text>
+        </view>
+      </view>
+      <view class="img-uploader" >
+        <view class="uploader-title" bindtap="doUploadImage">
+          <text>上传图片</text>
+        </view>
+        <view class="uploader-image" wx:if="{{imgUrl}}">
+          <image
+            class="book-image"
+            mode="aspectFit"
+            src="{{img}}"
+            background-size="cover"
+          ></image>
+        </view>
+      </view>
+      <view class="weui-cell">
+        <view class="weui-label">当前状态</view>
+        <picker bindchange="bindStateChange" value="{{state}}" range="{{statesArray}}" disabled="{{bReadOnly}}">
+          <view class="weui-input">{{statesArray[state]}}</view>
+        </picker>
+      </view>
+      <view class="weui-cell ">
+        <view class="weui-label">分类</view>
+        <picker bindchange="bindCategoryChange" value="{{category}}" range="{{categoryArray}}" disabled="{{bReadOnly}}">
+          <view class="weui-input">{{categoryArray[category]}}</view>
+        </picker>
+      </view>
+      
+      <view class="page-section-title">评价分数</view>
+      <view class="body-view">
+        <slider value="{{score}}" bindchange="scoreChange" min="0" max="100" show-value disabled="{{bReadOnly}}"/>
+      </view>
+
+      <view class="btn-area">
+        <button type="primary" formType="submit" disabled="{{bReadOnly}}">Submit</button>
+        <button type="primary" bindtap='collect' >Collect</button>
+      </view>
+    </form>
+  </view>
+</view>

@@ -1,0 +1,30 @@
+<!--pages/login/login.wxml-->
+<view class="container">
+  <view class="welcome-container" wx:if="{{!logged}}">
+    <image
+        class="welcome-image"
+        src="./openlib.gif"
+        background-size="cover"
+    ></image>
+  </view>
+  <!-- register to miniLib     -->
+  <view class="container" wx:elif="{{!registered}}">
+    <view class="userinfo" bindtap="login" >
+      <image
+          class="userinfo-avatar"
+          src="{{userInfo.avatarUrl}}"
+          background-size="cover"
+      ></image>
+      <view>
+          <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+          <text class="userinfo-nickname">{{userInfo.lastLoginTime}}</text>
+      </view>
+    </view>
+
+    <button  type="primary" size="{{primarySize}}" open-type='share'>Please share it to your family group, in order to enter the family library.</button>
+  </view>
+    <!-- show library-->
+  <view class="container" wx:else>
+    <text>welcome!</text>
+  </view>
+</view>

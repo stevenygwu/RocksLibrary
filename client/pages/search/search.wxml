@@ -1,0 +1,7 @@
+<!--pages/search/search.wxml-->
+<view class="container">
+  <view class="search-container">
+    <input class="search-box" name="text" placeholder="please input here" focus="true" bindtap="searchByText"/>
+    <image class="search-icon" src="resources/kind/scan.png" bindtap="searchByScan"></image>
+  </view>
+</view>
